@@ -1,6 +1,7 @@
 # ProjectSE
 
 Project worked by: Katia Haveri
+
 Project idea: Developing a Library Management System for Schools/Universities
 
 Problem
