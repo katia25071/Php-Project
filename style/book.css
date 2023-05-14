@@ -1,0 +1,95 @@
+/* body section  */
+
+.section-body {
+  margin-top: 0px;
+  padding-left: 15px;
+}
+
+.section-body h4 {
+  font-size: large;
+  margin: 10px;
+}
+
+.vertical-nav {
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+
+.section-body ul {
+  list-style-type: none;
+  width: 18%;
+  background-color: #d6e4f0;
+  position: absolute;
+  height: auto;
+  overflow: auto;
+  padding-bottom: 10px;
+  padding-left: 10px;
+
+}
+
+.section-body li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.section-body li a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.section-body li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+
+
+/* section-2 */
+
+.image-holder {
+  border: 1px solid #ccc;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+
+.image-holder:hover {
+  border: 1px solid #777;
+  transform: scale(1.05, 1.05);
+}
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  column-gap: 20px;
+  flex-wrap: wrap;
+  row-gap: 25px;
+
+}
+
+div.desc {
+  font-size: small;
+  text-align: center;
+  width: 100%;
+}
+
+
+.desc button {
+  float: center !important;
+  /* margin-right: 10px; */
+  margin-bottom: 5px;
+}
+
+.gallery img {
+  height: 150px;
+  width: 120px;
+}
+
+
+
+.btn:hover {
+  background-color: rgb(31, 199, 106)ue;
+}
