@@ -25,14 +25,15 @@
         .my-sm-0 {
             margin-bottom: 10px !important;
         }
-        th {
-    text-align: center;
-  }
 
-  td {
-    text-align: center !important;
-    vertical-align: middle !important;
-  }
+        th {
+            text-align: center;
+        }
+
+        td {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
     </style>
 
 </head>
@@ -56,7 +57,7 @@ require 'db.php';
 
 <body>
     <?php
-        require 'authentication.php';
+    require 'authentication.php';
     require 'nav.php';
 
     ?>
@@ -81,71 +82,88 @@ require 'db.php';
                     if (isset($_POST['seearch'])) {
                         $s = $_POST['search'];
                         $sql = "select * from users where id='$s' or firstname like '%$s%' or lastname like '%$s%' ";
-                    } else 
+                    } else
                         $sql = "select * from users";
 
                     $result = mysqli_query($con, $sql);
                     $crow = mysqli_num_rows($result);
 
-                        if (!$crow) 
-                            echo "<br><center><h2><b><i>No Results</i></b></h2></center>";
-                        else {
+                    if (!$crow)
+                        echo "<br><center><h2><b><i>No Results</i></b></h2></center>";
+                    else {
 
-                            ?>
-                            <div class="over">
-                                <table class="table table-striped bg-white center" style="width:100%; ">
-                                    <thead>
+                        ?>
+                        <div id="h"class="over">
+                            <table class="table table-striped bg-white center" style="width:100%; ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Firstname</th>
+                                        <th scope="col">Lastname</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Phoneno</th>
+                                        <th>Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        $id = $row['id'];
+                                        $firstname = $row['firstname'];
+                                        $lastname = $row['lastname'];
+                                        $email = $row['email'];
+                                        $phoneno = $row['phoneno'];
+                                        $type = $row['type'];
+
+                                        ?>
                                         <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Firstname</th>
-                                            <th scope="col">Lastname</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Phoneno</th>
-                                            <th>Action</th>
+                                            <th scope="row">
+                                                <?php echo $id ?>
+                                            </th>
+                                            <td>
+                                                <?php echo $firstname ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $lastname ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $email ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $phoneno ?>
+                                            </td>
+                                            <?php
+                                            if ($type != 'admin') {
+                                                ?>
+                                                <td><button class='btn btn-danger' Onclick='ConfirmDelete()'><a
+                                                            style='color:white;text-decoration:none'
+                                                            href='admindeleteuser.php?id=<?php echo $row['id'] ?>'>Delete</a></button></td>
+                                                <?php
+                                            } else
+                                                echo "<td></td>";
+                                            ?>
 
                                         </tr>
-                                    </thead>
-                                    <tbody>
+
                                         <?php
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            $id = $row['id'];
-                                            $firstname = $row['firstname'];
-                                            $lastname = $row['lastname'];
-                                            $email=$row['email'];
-                                            $phoneno=$row['phoneno'];
-                                           
-
-                                            ?>
-                                            <tr>
-                                                <th scope="row"><?php echo $id?></th>
-                                                <td><?php echo $firstname?></td>
-                                                <td><?php echo $lastname?></td>
-                                                <td><?php echo $email?></td>
-                                                <td><?php echo $phoneno?></td>
-                                                <td><button class='btn btn-danger' Onclick='ConfirmDelete()'><a style='color:white;text-decoration:none' href='<?php $row['id']?>'>Delete</a></button></td>
-                                             
-                                               
-                                            </tr>
-
-                                            <?php
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
 
+    </body>
+    <?php
+                    }
 
-        </body>
-        <?php
-                        }
-                    
                     ?>
 
 </html>

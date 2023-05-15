@@ -5,11 +5,17 @@ include('db.php')
 
 <head>
   <style>
-    /* .nav-item {
-      padding-left: 20px;
-    } */
+    .nav-item {
+      /* padding-left: 20px; */
+      font-family: 'Times New Roman', Times, serif !important;
+    }
+    .nav-item:hover {
+      font-weight: bold;
+    }
+
 
      .navbar {
+
       /* background-color: #0058b0; */
        /* background-color: #00458c; */
     }
@@ -20,7 +26,7 @@ include('db.php')
     .navbar-light .navbar-nav .show>.nav-link {
       color: white;
     } */
-
+  
   </style>
 </head>
 
@@ -36,14 +42,12 @@ if (isset($_SESSION['type']) == true) {
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-      <a class="navbar-brand" href="home.php">
+      <!-- <a class="navbar-brand" href="home.php">
         <img src="images/logo2.png " width="80" height="50" alt="EPOKA">
 
-      </a>
+      </a> -->
 
-      <a class="navbar-brand" href="home.php">
-
-      </a>
+     
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,10 +78,10 @@ if (isset($_SESSION['type']) == true) {
     ?>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <a class="navbar-brand" href="home.php">
+        <!-- <a class="navbar-brand" href="home.php">
           <img src="images/logo2.png " width="80" height="50" alt="EPOKA">
 
-        </a>
+        </a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -110,10 +114,10 @@ if (isset($_SESSION['type']) == true) {
   ?>
   <nav class="navbar navbar-expand-lg navbar-light navbar-light bg-light ">
 
-    <a class="navbar-brand" href="home.php">
+    <!-- <a class="navbar-brand" href="home.php">
       <img src="images/logo2.png " width="80" height="50" alt="EPOKA">
 
-    </a>
+    </a> -->
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

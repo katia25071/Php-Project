@@ -15,8 +15,9 @@ if (isset($_SESSION['type']) == true) {
                 </a></li>
             <!-- <li><a href="message.php"><i class="menu-icon fa fa-inbox"></i>Messages</a> -->
             </li>
-            <li><a href="adminusers.php"><i class="menu-icon fa fa-users"></i>Manage Students </a>
+            <li><a href="adminusers.php"><i class="menu-icon fa fa-users"></i>Manage Users </a>
             </li>
+            <li><a href="adduser.php"><i class="menu-icon fa fa-plus"></i>Add Users</a></li>
             <li><a href="adminbooks.php"><i class="menu-icon fa fa-book"></i>All Books </a></li>
             <li><a href="addbook.php"><i class="menu-icon fa fa-plus"></i>Add Books </a></li>
             <!-- <li><a href="requests.php"><i class="menu-icon fa fa-tasks"></i>Issue/Return Requests </a></li>

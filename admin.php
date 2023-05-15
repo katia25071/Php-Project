@@ -29,7 +29,7 @@
 
 <body>
     <?php
-     include("authentication.php");
+    include("authentication.php");
     include 'nav.php';
     require('db.php');
 
@@ -37,7 +37,7 @@
         // echo "<script type='text/javascript'>alert('Access Accepted!!!')</script>";
         ?>
         <div class="wrapper">
-            <div class="container">
+            <div class="container" style="margin-left:0">
                 <div class="row">
 
                     <?php
@@ -68,10 +68,10 @@
                             <p><b>Mobile number: </b>
                                 <?php echo $phone ?>
                             </p>
-                            <a href="#" class="btn btn-primary ">Edit</a>
+                            <a href="useredit.php?id=<?php echo $id?>" class="btn btn-primary ">Edit</a>
                         </div>
                     </div>
-
+  
                 </div>
             </div>
         

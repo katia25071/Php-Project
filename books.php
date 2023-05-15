@@ -56,7 +56,7 @@
 
     <div class="section-body">
 
-        <div class="vertical-nav">
+        <!-- <div class="vertical-nav">
             <ul>
                 <h5>
                     <left> Category</left>
@@ -74,7 +74,7 @@
                 }
                 ?>
             </ul>
-        </div>
+        </div> -->
 
         <div class="gallery-main">
             <div class="gallery">
