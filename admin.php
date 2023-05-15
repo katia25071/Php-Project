@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Login</title>
+    <title>Admin Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,23 +22,17 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style/style.css" />
-    <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-    <style>
-        .span3,
-        .span9 {
-            display: inline-block;
-        }
-    </style>
+ 
+
 </head>
-<?php
 
-
-include 'nav.php';
-require('db.php');
-?>
 
 <body>
     <?php
+     include("authentication.php");
+    include 'nav.php';
+    require('db.php');
+
     if ($_SESSION['type']) {
         // echo "<script type='text/javascript'>alert('Access Accepted!!!')</script>";
         ?>
@@ -46,32 +40,11 @@ require('db.php');
             <div class="container">
                 <div class="row">
 
-                    <div class="span3">
-                        <div class="sidebar">
-                            <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="admin.php"><i class="menu-icon 	fa fa-user"></i>Profile
-                                    </a></li>
-                                <li><a href="message.php"><i class="menu-icon fa fa-inbox"></i>Messages</a>
-                                </li>
-                                <li><a href="student.php"><i class="menu-icon fas fa-users"></i>Manage Students </a>
-                                </li>
-                                <li><a href="adminbooks.php"><i class="menu-icon fa fa-book"></i>All Books </a></li>
-                                <li><a href="addbook.php"><i class="menu-icon fa fa-plus"></i>Add Books </a></li>
-                                <li><a href="requests.php"><i class="menu-icon fas fa-taskss"></i>Issue/Return Requests </a>
-                                </li>
-                                <li><a href="recommendations.php"><i class="menu-icon icon-list"></i>Book Recommendations
-                                    </a>
-                                </li>
-                                <li><a href="current.php"><i class="menu-icon icon-list"></i>Currently Issued Books </a>
-                                </li>
-                            </ul>
+                    <?php
+                    require 'menu.php';
+                    ?>
 
-                        </div>
-                    </div>
-
-
-                 
-                    <div class="card" >
+                    <div class="card">
                         <img class="card-img-top" src="images/profile.jpeg" alt="Card image cap">
                         <div class="card-body">
                             <?php
@@ -84,53 +57,28 @@ require('db.php');
                             $email = $row['email'];
                             $phone = $row['phoneno'];
                             ?>
-                            
-                            <h5 class="card-title"><?php echo $name . " " . $lastname ?></h5>
+
+                            <h5 class="card-title">
+                                <?php echo $name . " " . $lastname ?>
+                            </h5>
                             <p class="card-text"><b>Email ID: </b>
-                                        <?php echo $email ?></p>
-                            <p class="card-text"><p><b>Mobile number: </b>
-                                        <?php echo $phone ?></p>
+                                <?php echo $email ?>
+                            </p>
+                            <p class="card-text">
+                            <p><b>Mobile number: </b>
+                                <?php echo $phone ?>
+                            </p>
                             <a href="#" class="btn btn-primary ">Edit</a>
                         </div>
                     </div>
 
-                    <!-- <div class="span3">
-
-                        <div class="card">
-                            <img class="card-img-top" src="images/profile.jpeg" alt="Card image cap
-                           ">
-                            <div class="card-body">
-
-                                <?php
-                                $id = $_SESSION['id'];
-                                $sql = "select * from users where id=$id";
-                                $result = mysqli_query($con, $sql);
-                                $row = mysqli_fetch_array($result);
-                                $name = $row['firstname'];
-                                $lastname = $row['lastname'];
-                                $email = $row['email'];
-                                $phone = $row['phoneno'];
-                                ?>
-                                <i>
-                                    <h1 class="card-title">
-                                        <?php echo $name . " " . $lastname ?>
-                                    </h1>
-
-                                    <p><b>Email ID: </b>
-                                        <?php echo $email ?>
-                                    </p>
-                                    <p><b>Mobile number: </b>
-                                        <?php echo $phone ?>
-                                    </p>
-                                </i>
-                                <a href="edit_admin_details.php" class="btn btn-primary">Edit Details</a>
-                            </div>
-                        </div>
-                    </div> -->
-
                 </div>
             </div>
+        
         </div>
+        <?php
+                require 'footer.php';
+    ?>
 
     </body>
     <?php

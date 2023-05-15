@@ -18,6 +18,13 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style/style.css" />
+    <style>
+        #page-content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 
 
@@ -26,7 +33,7 @@
         <?php
         require 'nav.php';
         require('db.php');
-        //session_start();
+        session_start();
         // When form submitted, check and create user session.
         if (isset($_POST['email'])) {
             $email = stripslashes($_POST['email']); // removes backslashes
@@ -52,11 +59,12 @@
                 }
             } else {
                 echo "
-      
+
             <div class='form'>
                   <h3>Incorrect email/password.</h3><br/>
                   <h4 class='link'><a href='login.php'>Click here to Login</a></h4>
             <h4 class='link'><a href='home.php'>Go to homepage</a> </h4>
+            </div>
                   ";
             }
         } else {
@@ -79,7 +87,7 @@
 
         <?php
         }
-        // include('footer.php');
+        include('footer.php');
         ?>
 
 </body>

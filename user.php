@@ -19,10 +19,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style/style.css" />
 </head>
-<?php
-// require('authentication.php');
-require 'nav.php';
-// session_start();
-require('db.php');
-echo $_SESSION['type'];
-?>
+
+<body>
+
+    <?php
+    require('authentication.php');
+    require 'nav.php';
+    // session_start();
+    require('db.php');
+    ?>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <?php require 'menu.php'; ?>
+            </div>
+        </div>
+    </div>
+    <?php
+                require 'footer.php';
+    ?>
+
+</body>
+
+</html>

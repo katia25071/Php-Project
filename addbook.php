@@ -18,6 +18,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <link rel="stylesheet" href="style/style.css" />
     <style>
         #customFile,
@@ -27,11 +28,11 @@
     </style>
 </head>
 
-<body style="background-image: url(image/bg.png)">
+<body>
 
     <?php
     require('db.php');
-    // include("authentication.php");
+    include("authentication.php");
     require('nav.php');
 
     // When form submitted, insert values into the database.
@@ -52,7 +53,7 @@
 
 
 
-        $sql = "SELECT * from books where title='$title' ";
+        $sql = "SELECT * from books where title='$title'";
         $res = mysqli_query($con, $sql);
 
         if (mysqli_num_rows($res) > 0) {
@@ -60,8 +61,6 @@
             $row = mysqli_fetch_assoc($res);
             if ($title == isset($row['title'])) {
                 ?>
-
-
                 <div class='form'>
                     <h3>BOOK already exists</h3><br>
                 </div>
@@ -97,29 +96,9 @@
         <div class="wrapper">
             <div class="container">
                 <div class="row">
-                    <div class="span3">
-                        <div class="sidebar">
-                            <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="admin.php"><i class="menu-icon 	fa fa-user"></i>Profile
-                                    </a></li>
-                                <li><a href="message.php"><i class="menu-icon fa fa-inbox"></i>Messages</a>
-                                </li>
-                                <li><a href="student.php"><i class="menu-icon fas fa-users"></i>Manage Students </a>
-                                </li>
-                                <li><a href="book.php"><i class="menu-icon fa fa-book"></i>All Books </a></li>
-                                <li><a href="addbook.php"><i class="menu-icon fa fa-plus"></i>Add Books </a></li>
-                                <li><a href="requests.php"><i class="menu-icon fas fa-taskss"></i>Issue/Return Requests </a>
-                                </li>
-                                <li><a href="recommendations.php"><i class="menu-icon icon-list"></i>Book Recommendations
-                                    </a>
-                                </li>
-                                <li><a href="current.php"><i class="menu-icon icon-list"></i>Currently Issued Books </a>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-
+                    <?php
+                    require 'menu.php';
+                    ?>
 
                     <form class="form" action="" method="post" enctype="multipart/form-data">
                         <h1 class="login-title">BOOKS</h1>
@@ -134,11 +113,11 @@
                         <input type="text" class="form-control" name="category" placeholder="Category" required>
                         <input type="text" class="form-control" name="edition" placeholder="Edition" required>
                         <textarea class="form-control" name="description" placeholder="Description" required></textarea>
-                        <input type="text" class="form-control" name="avail" placeholder="Availabilitiy" required>
-                        <input type="text" class="form-control" name="year" placeholder="Year" required>
-                        <input type="submit" name="submit" value="ADD" class="login-button" style="margin-bottom:10px;"
+                        <input type="text" class="form-control" name="avail" placeholder="Availabilitiy" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                        <input type="text" class="form-control" name="year" placeholder="Year" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                        <input type="submit" name="submit" value="ADD" class="login-button" style="margin-bottom:10px;border-radius:3px"
                             required>
-                        <h4 class='link'><a href='adminbooks.php'>Click here to view books</a></h4>
+                       
                     </form>
 
                 </div>
@@ -149,6 +128,7 @@
     }
     ?>
 </body>
+
 <script>
     // Add the following code if you want the name of the file appear on select
     $(".custom-file-input").on("change", function () {

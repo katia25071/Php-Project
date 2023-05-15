@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Admin Books</title>
+    <title>Admin Users</title>
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -42,7 +42,7 @@
 <script>
 
     function ConfirmDelete() {
-        return confirm("Are you sure you want to delete this book?");
+        return confirm("Are you sure you want to delete this user?");
     }
 
 </script>
@@ -54,9 +54,9 @@ require 'db.php';
 
 <html>
 
-<body style="background-image: url(image/bg.png)">
+<body>
     <?php
-          require 'authentication.php';
+        require 'authentication.php';
     require 'nav.php';
 
     ?>
@@ -80,9 +80,9 @@ require 'db.php';
                     <?php
                     if (isset($_POST['seearch'])) {
                         $s = $_POST['search'];
-                        $sql = "select * from books where bid='$s' or title like '%$s%' or author like '%$s%' ";
+                        $sql = "select * from users where id='$s' or firstname like '%$s%' or lastname like '%$s%' ";
                     } else 
-                        $sql = "select * from books";
+                        $sql = "select * from users";
 
                     $result = mysqli_query($con, $sql);
                     $crow = mysqli_num_rows($result);
@@ -97,47 +97,32 @@ require 'db.php';
                                     <thead>
                                         <tr>
                                             <th scope="col">Id</th>
-                                            <th scope="col">Image</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Author</th>
-                                            <th scope="col">Category</th>
-                                            <th scope="col">Publisher</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Availability</th>
-                                            <th scope="col">Year</th>
-                                            <th colospan="2">Action</th>
+                                            <th scope="col">Firstname</th>
+                                            <th scope="col">Lastname</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Phoneno</th>
+                                            <th>Action</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         while ($row = mysqli_fetch_array($result)) {
-                                            $id = $row['bid'];
-                                            $title = $row['title'];
-                                            $image = $row['image'];
-                                            $author=$row['author'];
-                                            $category=$row['category'];
-                                            $publisher=$row['publisher'];
-                                            $description=$row['description'];
-                                            $year=$row['year'];
-                                            $ava= $row['availability'];
+                                            $id = $row['id'];
+                                            $firstname = $row['firstname'];
+                                            $lastname = $row['lastname'];
+                                            $email=$row['email'];
+                                            $phoneno=$row['phoneno'];
+                                           
 
                                             ?>
                                             <tr>
                                                 <th scope="row"><?php echo $id?></th>
-                                                <td><?php echo "images/$image"?></td>
-                                                <td><?php echo $title?></td>
-                                                <td><?php echo $author?></td>
-                                                <td><?php echo $category?></td>
-                                                <td><?php echo $publisher?></td>
-                                                <td><?php echo $description?></td>
-                                                <td><?php echo $ava?></td>
-                                                <td><?php echo $year?></td>
-                                                <td>
-      
-      <button class='btn btn-primary'><a style='color:white;text-decoration:none' href='edit.php?id=<?php $row['bid']?>'>Edit</a></button></td>
-      <td><button class='btn btn-danger' Onclick='ConfirmDelete()'><a style='color:white;text-decoration:none' href='<?php $row['bid']?>'>Delete</a></button>
-      </td>
+                                                <td><?php echo $firstname?></td>
+                                                <td><?php echo $lastname?></td>
+                                                <td><?php echo $email?></td>
+                                                <td><?php echo $phoneno?></td>
+                                                <td><button class='btn btn-danger' Onclick='ConfirmDelete()'><a style='color:white;text-decoration:none' href='<?php $row['id']?>'>Delete</a></button></td>
                                              
                                                
                                             </tr>

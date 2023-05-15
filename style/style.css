@@ -1,5 +1,6 @@
 body {
-  background: #0058b0;
+    background-color: #00458c!important;
+ 
 }
 
 .form {
@@ -50,6 +51,12 @@ h3 {
   text-align: center;
 }
 
+
+
+
+.carousel-item img{
+  height: 30rem;
+}
 /*Books*/
 
 .featured_boks {
@@ -62,10 +69,9 @@ h3 {
 
 .featured_boks h1 {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin-bottom: 30px;
-  font-size: 45px;
+  /* font-size: 45px; */
   color: rgb(36, 35, 35) !important;
   /* padding-top:20px; */
 }
@@ -73,7 +79,7 @@ h3 {
 .featured_boks .featured_book_box {
   width: 95%;
   /* height: 60vh; */
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   overflow: hidden;
@@ -102,49 +108,18 @@ h3 {
   margin: 15px;
 }
 
-.featured_boks
-  .featured_book_box
-  .featured_book_card
-  .featurde_book_tag
-  .writer {
+.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .writer {
   color: #919191;
 }
 
-.featured_boks
-  .featured_book_box
-  .featured_book_card
-  .featurde_book_tag
-  .categories {
+.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .categories {
   color: #089da1;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
-.featured_boks
-  .featured_book_box
-  .featured_book_card
-  .featurde_book_tag
-  .book_price {
-  margin-top: 8px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
 
-.featured_boks
-  .featured_book_box
-  .featured_book_card
-  .featurde_book_tag
-  .book_price
-  sub {
-  font-weight: 100;
-  padding: 0 5px;
-}
-
-.featured_boks
-  .featured_book_box
-  .featured_book_card
-  .featurde_book_tag
-  .f_btn {
+.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .f_btn {
   padding: 8px 20px;
   border: 2px solid #089da1;
   text-decoration: none;
@@ -158,6 +133,7 @@ h3 {
 .widget-menu {
   border-radius: 3px;
   overflow: hidden;
+
 }
 .widget-menu li {
   list-style-type: none;
@@ -222,6 +198,7 @@ h3 {
   padding: 9px 15px 9px 30px;
 }
 
+
 .row .span3 {
   width: 30%;
   margin-right: 10%;
@@ -237,12 +214,28 @@ h3 {
 .row .card {
   margin: auto;
   width: 50%;
-  padding: 10px;
+  padding: 10px; 
 }
 
-.card-body{
-  text-align: center;
+.row .table{
+  margin: auto;
+  width: 50%;
+
 }
+
+.seearch{
+  width: 60%;
+}
+.seearch .navbar{
+  padding: 0px 0px;
+}
+
+.row .card-body{
+  text-align: center;
+  font-size: 20px;
+}
+
+
 @media only screen and (max-width: 1000px) {
   .row {
     display: block;
@@ -255,9 +248,45 @@ h3 {
     width: 60%;
   }
 
-  .row .card {
+  .row .card img{
     margin: auto;
     width: 70%;
     padding: 10px;
   }
+  .seearch{
+    width: 100%;
+  }
+  .row .card-body{
+
+    font-size: 12px;
+  }
+  
+    .seearch .navbar{
+      padding: 0px 0px;
+      width:60%;
+      margin:auto;
+  }
+
+  
+}
+
+@media only screen and (max-width: 1500px) {
+  /* .center{
+  margin:auto;
+  width: 60%; 
+  padding: 10px;
+} */
+.over{
+  overflow-x: scroll;
+}
+
+
+
+
+}
+
+@media (min-width: 1000px){
+.container {
+    margin-left: 0;
+}
 }
