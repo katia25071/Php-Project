@@ -36,15 +36,15 @@
   font-size: small;
 }
 
-.section-body li a.active {
+/* .section-body li a.active {
   background-color: #04AA6D;
   color: white;
 }
 
 .section-body li a:hover:not(.active) {
-  background-color: #555;
+  background-color: #00458c;
   color: white;
-}
+} */
 
 
 
@@ -90,14 +90,11 @@ div.desc {
 }
 
 .gallery img {
-  height: 150px;
-  width: 120px;
+  height: 250px;
+  width: 200px;
 }
 
 
-.btn:hover {
-  background-color: rgb(31, 199, 106)ue;
-}
 
 @media only screen and (max-width: 600px) {
   .section-body ul{

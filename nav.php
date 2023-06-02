@@ -7,32 +7,20 @@ include('db.php')
   <style>
     .nav-item {
       /* padding-left: 20px; */
-      font-family: 'Times New Roman', Times, serif !important;
-    }
-    .nav-item:hover {
-      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
+    .navbar-expand-lg {
+  background-color: #00458c !important;
+}
 
-     .navbar {
-
-      /* background-color: #0058b0; */
-       /* background-color: #00458c; */
-    }
-
-    /* .navbar-light .navbar-nav .active>.nav-link,
-    .navbar-light .navbar-nav .nav-link.active,
-    .navbar-light .navbar-nav .nav-link.show,
-    .navbar-light .navbar-nav .show>.nav-link {
-      color: white;
-    } */
-  
   </style>
 </head>
 
 <?php
 $type1 = 'Simpleuser';
 $type2 = 'admin';
+$type3 = 'Simpleadmin';
 // navbar-light bg-light
 
 if (isset($_SESSION['type']) == true) {
@@ -40,14 +28,12 @@ if (isset($_SESSION['type']) == true) {
 
   if ($type == $type1) {
     ?>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
 
-      <!-- <a class="navbar-brand" href="home.php">
-        <img src="images/logo2.png " width="80" height="50" alt="EPOKA">
+      <a class="navbar-brand" href="/project/">
+        <img src="/project/images/librari.png " width="100" height="50" alt="EPOKA">
 
-      </a> -->
-
-     
+      </a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,16 +42,18 @@ if (isset($_SESSION['type']) == true) {
 
       <div class="collapse navbar-collapse justify-content-end" style="margin-right:50px" id="navbarNavDropdown">
         <ul class="navbar-nav">
-
+        <li class="nav-item">
+          <a class="nav-link active" style="color:white" href="/project/books.php">Books</a>
+        </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active fa fa-user-circle-o" id="navbarDropdownMenuLink"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle active" id="navbarDropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="" style="color:white">
+              <i class="fa fa-user-circle-o"></i>
               <?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'] ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="user.php">Dashboard</a>
-              <a class="dropdown-item" href="books.php">Books</a>
-              <a class="dropdown-item" href="logout.php">LogOUT</a>
+              <a class="dropdown-item" href="/project/users/user.php">Dashboard</a>
+              <a class="dropdown-item" href="/project/logout.php">LogOut</a>
             </div>
           </li>
         </ul>
@@ -73,15 +61,16 @@ if (isset($_SESSION['type']) == true) {
     </nav>
     <?php
 
-  } else if ($type == $type2) {
+  } else if ($type == $type2 || $type == $type3) {
 
     ?>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light ">
 
-        <!-- <a class="navbar-brand" href="home.php">
-          <img src="images/logo2.png " width="80" height="50" alt="EPOKA">
+        <a class="navbar-brand" >
+          <img src="/project/images/librari.png" width="100" height="50" alt="EPOKA">
 
-        </a> -->
+        </a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -90,18 +79,14 @@ if (isset($_SESSION['type']) == true) {
         <div class="collapse navbar-collapse justify-content-end" style="margin-right:50px" id="navbarNavDropdown">
           <ul class="navbar-nav">
 
-            <!-- <li class="nav-item">
-              <a class="nav-link active" href="admin.php">Dashboard</a>
-            </li> -->
-
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active fa fa-user-circle-o " href="" id="navbarDropdownMenuLink"
+              <a class="nav-link dropdown-toggle active" style="color:white" href="" id="navbarDropdownMenuLink"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'] ?>
+               <i class=" fa fa-user-circle-o "> </i><?php echo " ".$_SESSION['firstname'] . " " . $_SESSION['lastname'] ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="admin.php">Dashboard</a>
-                <a class="dropdown-item" href="logout.php">LogOut</a>
+                <a class="dropdown-item" href="/project/logout.php">LogOut</a>
               </div>
             </li>
           </ul>
@@ -112,12 +97,12 @@ if (isset($_SESSION['type']) == true) {
   }
 } else {
   ?>
-  <nav class="navbar navbar-expand-lg navbar-light navbar-light bg-light ">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
 
-    <!-- <a class="navbar-brand" href="home.php">
-      <img src="images/logo2.png " width="80" height="50" alt="EPOKA">
+    <a class="navbar-brand" href="/project/">
+      <img src="images/librari.png" width="100" height="50" alt="EPOKA">
 
-    </a> -->
+    </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,11 +113,11 @@ if (isset($_SESSION['type']) == true) {
       <ul class="navbar-nav">
 
         <li class="nav-item">
-          <a class="nav-link active" href="books.php">Books</a>
+          <a class="nav-link active" style="color:white" href="books.php">Books</a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active " href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          <a class="nav-link dropdown-toggle active " style="color:white" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Account
           </a>

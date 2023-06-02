@@ -1,7 +1,10 @@
 <?php
+
 session_start();
+
+
 if (!isset($_SESSION["type"])) {
-    header("Location: login.php");
+    header("Location:/project/login.php");
     exit();
 }
 ?>

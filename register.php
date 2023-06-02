@@ -37,7 +37,7 @@
     include('phpmailer/includes/PHPMailer.php');
     include('phpmailer/includes/SMTP.php');
     include('phpmailer/includes/Exception.php');
-    require 'confirmmail.php';
+
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
 
@@ -89,54 +89,36 @@
 
         } else {
             $code = mails($email);
-        
             ?>
            
-            <form action="" method='POST'>
+            <form action="confirm.php" method='POST'>
                 <div class='form'>
                     <h1 class="login-title">Enter confirmation code:</h1>
-                    <!-- <input type="hidden" name="email" value="<?php echo $code ?>" required> -->
+                    <input type="hidden" name="codes" value="<?php echo $code ?>" required>
+                    <input type="hidden" name="firstname" value="<?php echo $firstname ?>" required>
+                    <input type="hidden" name="lastname" value="<?php echo $lastname ?>" required>
+                    <input type="hidden" name="phone" value="<?php echo $phone ?>" required>
+                    <input type="hidden" name="email" value="<?php echo $email ?>" required>
+                    <input type="hidden" name="password" value="<?php echo $password ?>" required>
                     <input type="text" class='form-control' name='code' placeholder='Code' required>
                     <input type='submit' name='confirm' onclick='myFunction()' value='Confirm' class='login-button'>
                 </div>
             </form>
 
             <?php
-              if (isset($_POST['confirm'])) {
-                $code=$_POST['email'];
-               $c=$_POST['code'];
-            //    $v=verify($code,$c);
-               if ($code == $c) {
-                $type = "Simpleuser";
-                $query = "INSERT into `users` (id, firstname, lastname, type, phoneno, email, password,verifycode) VALUES ('0000','$firstname','$lastname','$type', '$phone', '$email', '" . md5($password) . "','$code')";
-                $result = mysqli_query($con, $query);
-                echo "
-                <div class='form'>
-                <h3>You are registered successfully.</h3><br/>
-                <p class='link'>Click here to <a href='login.php'>Login</a></p>
-                </div>";
-    
-            } else {
-                echo "
-                <div class='form'>
-                <h3>The code is not correct. Try again. </h3><br/>
-                <p class='link'>Click here to <a href='register.php'>Register</a></p>
-                </div>";
-                    mysqli_query($con, "DELETE FROM `users` WHERE verifycode='$c'");
-            }
-            
           
-      
-        }}
+            
+        }
 
     } else {
         ?>
         <form class="form" action="" method="post">
             <h1 class="login-title">Registration</h1>
-            <input type="text" class="form-control" name="firstname" placeholder="Firstname" required />
+            <input type="text" class="form-control" name="firstname" placeholder="Firstname"  placeholder="Email Adress"  />
             <input type="text" class="form-control" name="lastname" placeholder="Lastname" required />
-            <input type="email" class="form-control" name="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-                title="Only epoka email can access" placeholder="Email Adress" required>
+            <!-- <input type="email" class="form-control" name="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                title="Only epoka email can access" placeholder="Email Adress" required> -->
+                <input class="form-control" type="email" name="email" pattern="[a-zA-Z0-9._%+-]+@epoka\.edu\.al"     placeholder="Email Adress"    title="Only epoka email can access"required>
             <input type="tel" class="form-control" name="phone" placeholder="Phone number" title="Format 0698781963" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                 required />
             <input type="password" class="form-control" name="password" minlength="8"
@@ -152,6 +134,8 @@
     }
     require 'footer.php';
     ?>
+  
+
 </body>
 
 </html>

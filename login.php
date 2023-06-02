@@ -29,36 +29,36 @@
 
 
 <body>
- 
-        <?php
-        require 'nav.php';
-        require('db.php');
-        session_start();
-        // When form submitted, check and create user session.
-        if (isset($_POST['email'])) {
-            $email = stripslashes($_POST['email']); // removes backslashes
-            $password = stripslashes($_POST['password']);
+    
+            <?php
+            require 'nav.php';
+            require('db.php');
+            session_start();
+            // When form submitted, check and create user session.
+            if (isset($_POST['email'])) {
+                $email = stripslashes($_POST['email']); // removes backslashes
+                $password = stripslashes($_POST['password']);
 
-            // Check user is exist in the database
-            $query = "SELECT * FROM `users` WHERE email='$email'
+                // Check user is exist in the database
+                $query = "SELECT * FROM `users` WHERE email='$email'
                      AND password='" . md5($password) . "'";
-            $result = mysqli_query($con, $query);
-            $rows = mysqli_num_rows($result);
-            $row = mysqli_fetch_assoc($result);
+                $result = mysqli_query($con, $query);
+                $rows = mysqli_num_rows($result);
+                $row = mysqli_fetch_assoc($result);
 
-            if ($rows == 1) {
-                $type = $row['type'];
-                $_SESSION['id']=$row['id'];
-                $_SESSION['type']=$type;
-                $_SESSION['firstname']=$row['firstname'];
-                $_SESSION['lastname']=$row['lastname'];
-                if ($type == "admin") {
-                    header("Location: admin.php");
+                if ($rows == 1) {
+                    $type = $row['type'];
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['type'] = $type;
+                    $_SESSION['firstname'] = $row['firstname'];
+                    $_SESSION['lastname'] = $row['lastname'];
+                    if ($type == "admin" ||$type == "Simpleadmin" ) {
+                        header("Location: admin/admin.php");
+                    } else {
+                        header("Location: users/user.php");
+                    }
                 } else {
-                    header("Location: user.php");
-                }
-            } else {
-                echo "
+                    echo "
 
             <div class='form'>
                   <h3>Incorrect email/password.</h3><br/>
@@ -66,29 +66,44 @@
             <h4 class='link'><a href='home.php'>Go to homepage</a> </h4>
             </div>
                   ";
+                }
+            } else {
+                ?>
+
+
+                <form class="form" method="post" name="login">
+                    <h1 class="login-title">Log In</h1>
+                    <input type="text" class="form-control" name="email" placeholder="Username" autofocus="true" required>
+                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+                    <input type="submit" value="Login" name="submit" class="login-button" style="margin-bottom:15px">
+                    <h4 class='link'><a href='register.php'>Click here to Register</a></h4>
+                    <h4 class='link'><a href='home.php'>Go to homepage</a> </h4>
+                </form>
+
+
+
+
+
+
+                <?php
             }
-        } else {
-            ?>
+?>
+           
 
 
-            <form class="form" method="post" name="login">
-                <h1 class="login-title">Log In</h1>
-                <input type="text" class="form-control" name="email" placeholder="Username" autofocus="true" required>
-                <input type="password" class="form-control" name="password" placeholder="Password" required>
-                <input type="submit" value="Login" name="submit" class="login-button" style="margin-bottom:15px">
-                <h4 class='link'><a href='register.php'>Click here to Register</a></h4>
-                <h4 class='link'><a href='home.php'>Go to homepage</a> </h4>
-            </form>
-
-            
-
-
+         
         
-
-        <?php
-        }
-        include('footer.php');
-        ?>
+        
+            <footer class="container" style="position:fixed; bottom:0">
+        
+            
+              <p>&copy; 2023 &middot; Katia Haveri &middot; Epoka University  </p>
+              <!-- <a href="#">Privacy</a> &middot; <a href="#">Terms</a> -->
+            </footer>
+         
+            
+      
+  
 
 </body>
 <?php

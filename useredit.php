@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Home</title>
+        <title>User Edit</title>
         <link rel="icon" href="images/logo2.png" type="image/icon type">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -25,6 +25,7 @@
 <?php
 include('db.php');
 include('authentication.php');
+
 include('nav.php');
 
 function display($id, $name, $lastname, $email, $phone)
@@ -66,9 +67,11 @@ if (isset($_POST['submit'])) {
     $email = stripslashes($_POST['email']);
     // $password = stripslashes($_POST['password']);
 
-    mysqli_query($con, "UPDATE users SET firstname='$firstname', lastname='$lastname', phoneno='$phone', email='$email'");
+    $id = $_SESSION['id'];
 
-    header("Location: admin.php");
+    mysqli_query($con, "UPDATE users SET firstname='$firstname', lastname='$lastname', phoneno='$phone', email='$email' where id='$id'");
+
+    header("Location: /project/admin/admin.php");
 } else {
     if (isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0) {
 
@@ -91,4 +94,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
+    <?php
+    require 'footer.php';
+    ?>
 </body>
