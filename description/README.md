@@ -61,3 +61,7 @@ Running the project locally
 5.Then load the database to phpMyAdmin:
   -Go to http://localhost/phpmyadmin , then go to Import and import the project.sql file found on XAMPP/httdocs/project/database folder 
 6.Open the application at any web browser by going to http://localhost and selecting the name of the application (project)
+7.Admin credentials: 
+-email:epokalibrary2023@gmail.com
+-pass:Amanda99
+*Users can only register with epoka mail, while admins can login also with other mails
