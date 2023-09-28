@@ -1,4 +1,3 @@
-#Php Project
 Project idea: Developing a Library Management System for Schools/Universities
 
 
